@@ -3,34 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Harsh Mathur's Portfolio</title>
+    <title>Scientist Portfolio</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Full-width Header -->
     <header>
         <div class="header-content">
-<!--            <img src="https://source.unsplash.com/1600x900/?space,galaxy" alt="Placeholder Image" class="header-image">-->
+<!--            <img src="https://source.unsplash.com/120x80/?profile" alt="Profile Picture" class="header-image">-->
             <h1>Harsh Mathur</h1>
         </div>
     </header>
 
-    <div class="container">
-        <!-- Sidebar Navigation -->
+    <!-- Content Area (A4 width) -->
+    <div class="content-wrapper">
+        <!-- Left Navigation -->
         <nav class="sidebar">
-            <a href="research.html" class="nav-link" data-target="research">Research Interest</a>
-            <a href="cv.html" class="nav-link" data-target="cv">CV</a>
-            <a href="about.html" class="nav-link" data-target="about">About Me</a>
-            <a href="gallery.html" class="nav-link" data-target="gallery">Gallery</a>
+            <a href="#about" class="nav-link" data-target="about.html">About Me</a>
+            <a href="#cv" class="nav-link" data-target="cv.html">CV</a>
+            <a href="#research" class="nav-link" data-target="research.html">Research Interest</a>
+            <a href="#gallery" class="nav-link" data-target="gallery.html">Gallery</a>
         </nav>
 
         <!-- Main Content -->
-        <main>
-            <section id="dynamic-content">
-                <p>Loading...</p> <!-- Default content while AJAX loads -->
-            </section>
+        <main id="content-container">
+            <p>Welcome! Select a section from the navigation to load content.</p>
         </main>
     </div>
 
+    <!-- Full-width Footer -->
     <footer>
         <p>© 2025 Harsh Mathur. All rights reserved.</p>
     </footer>
