@@ -3,16 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scientist Portfolio</title>
+    <title>Harsh Mathur's Portfolio</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <h1>Harsh Mathur</h1>
+        <div class="header-content">
+            <img src="placeholder-image.jpg" alt="Profile Picture" class="header-image">
+            <h1>Harsh Mathur</h1>
+        </div>
     </header>
 
     <div class="container">
-        <!-- Left Navigation -->
+        <!-- Sidebar Navigation -->
         <nav class="sidebar">
             <a href="about.html" class="nav-link" data-target="about">About Me</a>
             <a href="cv.html" class="nav-link" data-target="cv">CV</a>
@@ -20,7 +23,7 @@
             <a href="gallery.html" class="nav-link" data-target="gallery">Gallery</a>
         </nav>
 
-        <!-- Dynamic Content Section -->
+        <!-- Main Content -->
         <main>
             <section id="dynamic-content">
                 <p>Loading...</p> <!-- Default content while AJAX loads -->

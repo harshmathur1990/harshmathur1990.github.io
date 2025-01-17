@@ -10,42 +10,55 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh; /* Ensures the body takes full height */
-    background-color: #f0f0f0; /* Smooth grey background similar to ChatGPT */
+    background-color: #f7f7f7; /* Light grey background */
     color: #333; /* Dark grey text for readability */
 }
+
+/* Header */
 header {
-    background-color: #e0e0e0; /* Light grey header */
-    color: #333;
+    background-color: #333; /* Dark grey header background */
+    color: white;
     padding: 15px 20px;
-    text-align: center;
-    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 1000;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for elevation */
 }
-.container {
+.header-content {
     display: flex;
-    margin-top: 70px; /* To offset the fixed header */
-    flex: 1;
+    align-items: center;
+    gap: 20px;
+}
+.header-image {
+    width: 120px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 4px; /* Rounded corners */
+    border: 2px solid #fff; /* White border for better visibility */
+}
+header h1 {
+    font-size: 1.8rem;
 }
 
 /* Sidebar Navigation */
 .sidebar {
     position: fixed;
-    top: 70px;
+    top: 100px; /* Offset for the header */
     left: 0;
     width: 200px;
-    background-color: #d6d6d6; /* Slightly darker grey for the sidebar */
-    height: calc(100vh - 70px);
+    background-color: #222; /* Dark grey sidebar */
+    height: calc(100vh - 100px); /* Header height offset */
     display: flex;
     flex-direction: column;
     padding-top: 20px;
-    box-shadow: 2px 0 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    box-shadow: 2px 0 4px rgba(0, 0, 0, 0.2); /* Subtle shadow */
 }
 .sidebar a {
-    color: #333;
+    color: #ddd; /* Light grey text */
     text-decoration: none;
     padding: 15px 20px;
     display: block;
@@ -54,11 +67,11 @@ header {
 }
 .sidebar a:hover,
 .sidebar a.active {
-    background-color: #c4c4c4; /* Highlighted link color */
-    color: #000; /* Darker text for the active link */
+    background-color: #444; /* Slightly lighter grey for hover */
+    color: #fff; /* White text on hover */
 }
 .sidebar a.active {
-    border-left: 5px solid #757575; /* Dark grey indicator */
+    border-left: 5px solid #e74c3c; /* Red highlight for the active link */
 }
 
 /* Main Content */
@@ -68,19 +81,21 @@ main {
     padding: 20px;
     display: flex;
     flex-direction: column;
+    background: #fbf9f4; /* Off-white background for the main content */
+    background-image: radial-gradient(#ccc 1px, transparent 1px);
+    background-size: 20px 20px; /* Small dots pattern */
+    border: 1px solid #ddd; /* Thin border for definition */
 }
 #dynamic-content {
-    padding: 20px;
-    background: #ffffff; /* White background for the content area */
-    border: 1px solid #ccc;
     flex: 1; /* Ensure content fills available space */
     min-height: calc(100vh - 140px); /* Header + Footer height offset */
+    padding: 20px;
 }
 
 /* Footer */
 footer {
-    background-color: #d6d6d6;
-    color: #333;
+    background-color: #222; /* Dark grey footer */
+    color: #ddd;
     text-align: center;
     padding: 15px;
     margin-top: auto; /* Pushes the footer to the bottom */
@@ -97,8 +112,12 @@ footer {
     }
 }
 @media (max-width: 480px) {
-    header {
-        font-size: 1.25rem;
+    .header-content {
+        flex-direction: column;
+        gap: 10px;
+    }
+    header h1 {
+        font-size: 1.5rem;
     }
     .sidebar {
         width: 120px;
