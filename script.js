@@ -1,69 +1,65 @@
+document.addEventListener("scroll", () => {
+    const sections = document.querySelectorAll("section");
+    const sidebarLinks = document.querySelectorAll(".sidebar a");
 
-<script>
-    document.addEventListener("scroll", () => {
-        const sections = document.querySelectorAll("section");
-        const sidebarLinks = document.querySelectorAll(".sidebar a");
+    let currentSection = "";
 
-        let currentSection = "";
-
-        sections.forEach((section) => {
-            const sectionTop = section.offsetTop - 70;
-            if (window.scrollY >= sectionTop) {
-                currentSection = section.getAttribute("id");
-            }
-        });
-
-        sidebarLinks.forEach((link) => {
-            link.classList.remove("active");
-            if (link.getAttribute("href").includes(currentSection)) {
-                link.classList.add("active");
-            }
-        });
+    sections.forEach((section) => {
+        const sectionTop = section.offsetTop - 70;
+        if (window.scrollY >= sectionTop) {
+            currentSection = section.getAttribute("id");
+        }
     });
 
-    document.addEventListener("DOMContentLoaded", function () {
-        const navLinks = document.querySelectorAll(".nav-link");
-        const dynamicContent = document.getElementById("dynamic-content");
-
-        function loadContent(url) {
-            fetch(url)
-                .then((response) => {
-                    if (!response.ok) {
-                        throw new Error("Network response was not ok");
-                    }
-                    return response.text();
-                })
-                .then((html) => {
-                    dynamicContent.innerHTML = html;
-                    updateActiveLink(url);
-                })
-                .catch((error) => {
-                    dynamicContent.innerHTML = "<p>Error loading content. Please try again later.</p>";
-                    console.error("Error:", error);
-                });
+    sidebarLinks.forEach((link) => {
+        link.classList.remove("active");
+        if (link.getAttribute("href").includes(currentSection)) {
+            link.classList.add("active");
         }
+    });
+});
 
-        function updateActiveLink(target) {
-            navLinks.forEach((link) => {
-                if (link.getAttribute("href") === target) {
-                    link.classList.add("active");
-                } else {
-                    link.classList.remove("active");
+document.addEventListener("DOMContentLoaded", function () {
+    const navLinks = document.querySelectorAll(".nav-link");
+    const dynamicContent = document.getElementById("dynamic-content");
+
+    function loadContent(url) {
+        fetch(url)
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error("Network response was not ok");
                 }
+                return response.text();
+            })
+            .then((html) => {
+                dynamicContent.innerHTML = html;
+                updateActiveLink(url);
+            })
+            .catch((error) => {
+                dynamicContent.innerHTML = "<p>Error loading content. Please try again later.</p>";
+                console.error("Error:", error);
             });
-        }
+    }
 
-        // Add click event listeners to navigation links
+    function updateActiveLink(target) {
         navLinks.forEach((link) => {
-            link.addEventListener("click", (e) => {
-                e.preventDefault(); // Prevent default navigation
-                const url = e.target.getAttribute("href");
-                loadContent(url);
-            });
+            if (link.getAttribute("href") === target) {
+                link.classList.add("active");
+            } else {
+                link.classList.remove("active");
+            }
         });
+    }
 
-        // Load the first section by default
-        loadContent("about.html");
+    // Add click event listeners to navigation links
+    navLinks.forEach((link) => {
+        link.addEventListener("click", (e) => {
+            e.preventDefault(); // Prevent default navigation
+            const url = e.target.getAttribute("href");
+            loadContent(url);
+        });
     });
 
-</script>
+    // Load the first section by default
+    loadContent("about.html");
+});
