@@ -61,5 +61,5 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     // Load the first section by default
-    loadContent("about.html");
+    loadContent("research.html");
 });
