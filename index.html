@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scientist Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Harsh Mathur</h1>
+    </header>
+
+    <div class="container">
+        <!-- Left Navigation -->
+        <nav class="sidebar">
+            <a href="about.html">About Me</a>
+            <a href="cv.html">CV</a>
+            <a href="research.html">Research Interest</a>
+            <a href="gallery.html">Gallery</a>
+        </nav>
+
+        <!-- Main Content -->
+        <main>
+            <iframe src="about.html" name="content" id="content" frameborder="0"></iframe>
+        </main>
+    </div>
+
+    <footer>
+        <p>© 2025 Harsh Mathur. All rights reserved.</p>
+    </footer>
+</body>
+</html>
+
+<script>
+    document.addEventListener("scroll", () => {
+        const sections = document.querySelectorAll("section");
+        const sidebarLinks = document.querySelectorAll(".sidebar a");
+
+        let currentSection = "";
+
+        sections.forEach((section) => {
+            const sectionTop = section.offsetTop - 70;
+            if (window.scrollY >= sectionTop) {
+                currentSection = section.getAttribute("id");
+            }
+        });
+
+        sidebarLinks.forEach((link) => {
+            link.classList.remove("active");
+            if (link.getAttribute("href").includes(currentSection)) {
+                link.classList.add("active");
+            }
+        });
+    });
+</script>
