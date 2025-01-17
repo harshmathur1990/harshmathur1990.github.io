@@ -60,10 +60,11 @@ main {
     flex: 1;
     padding: 20px;
 }
-iframe {
-    width: 100%;
-    height: calc(100vh - 70px);
-    border: none;
+#dynamic-content {
+    padding: 20px;
+    background: #f7f7f7;
+    border: 1px solid #ccc;
+    min-height: calc(100vh - 140px); /* Adjust for header and footer */
 }
 
 /* Footer */
@@ -79,7 +80,6 @@ footer {
 /* Responsive Styles */
 @media (max-width: 768px) {
     .sidebar {
-        position: fixed;
         width: 150px;
     }
     main {

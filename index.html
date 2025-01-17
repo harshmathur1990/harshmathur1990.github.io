@@ -14,23 +14,28 @@
     <div class="container">
         <!-- Left Navigation -->
         <nav class="sidebar">
-            <a href="about.html">About Me</a>
-            <a href="cv.html">CV</a>
-            <a href="research.html">Research Interest</a>
-            <a href="gallery.html">Gallery</a>
+            <a href="about.html" class="nav-link" data-target="about">About Me</a>
+            <a href="cv.html" class="nav-link" data-target="cv">CV</a>
+            <a href="research.html" class="nav-link" data-target="research">Research Interest</a>
+            <a href="gallery.html" class="nav-link" data-target="gallery">Gallery</a>
         </nav>
 
-        <!-- Main Content -->
+        <!-- Dynamic Content Section -->
         <main>
-            <iframe src="about.html" name="content" id="content" frameborder="0"></iframe>
+            <section id="dynamic-content">
+                <p>Loading...</p> <!-- Default content while AJAX loads -->
+            </section>
         </main>
     </div>
 
     <footer>
         <p>© 2025 Harsh Mathur. All rights reserved.</p>
     </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
+
 
 <script>
     document.addEventListener("scroll", () => {
@@ -53,4 +58,50 @@
             }
         });
     });
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const navLinks = document.querySelectorAll(".nav-link");
+        const dynamicContent = document.getElementById("dynamic-content");
+
+        function loadContent(url) {
+            fetch(url)
+                .then((response) => {
+                    if (!response.ok) {
+                        throw new Error("Network response was not ok");
+                    }
+                    return response.text();
+                })
+                .then((html) => {
+                    dynamicContent.innerHTML = html;
+                    updateActiveLink(url);
+                })
+                .catch((error) => {
+                    dynamicContent.innerHTML = "<p>Error loading content. Please try again later.</p>";
+                    console.error("Error:", error);
+                });
+        }
+
+        function updateActiveLink(target) {
+            navLinks.forEach((link) => {
+                if (link.getAttribute("href") === target) {
+                    link.classList.add("active");
+                } else {
+                    link.classList.remove("active");
+                }
+            });
+        }
+
+        // Add click event listeners to navigation links
+        navLinks.forEach((link) => {
+            link.addEventListener("click", (e) => {
+                e.preventDefault(); // Prevent default navigation
+                const url = e.target.getAttribute("href");
+                loadContent(url);
+            });
+        });
+
+        // Load the first section by default
+        loadContent("about.html");
+    });
+
 </script>
